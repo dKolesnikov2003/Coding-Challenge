@@ -1,26 +1,26 @@
 import sys
 
 
-def fatalLog():
-    print('Указаны неверные парметры при запуске!', file=sys.stderr)
+def fatal_log():
+    print('Указаны неверные параметры при запуске!', file=sys.stderr)
     sys.exit(1)
 
 
-def argsParse(args):
+def args_parse(args):
     if len(args) != 5:
-        fatalLog()
+        fatal_log()
 
     try:
         params = [int(x) for x in args[1:]]
     except ValueError:
-        fatalLog()
+        fatal_log()
     for p in params:
-        if p < 2: fatalLog()
+        if p < 2: fatal_log()
 
     return params
 
 
-def pathGen(n, m):
+def path_gen(n, m):
     path = [1]
     while (i := (path[-1] + (m - 1)) % n) != 1:
         path.append(i)
@@ -28,5 +28,5 @@ def pathGen(n, m):
 
 
 if __name__ == '__main__':
-    p = argsParse(sys.argv)
-    print(pathGen(p[0], p[1]) + pathGen(p[2], p[3]))
+    p = args_parse(sys.argv)
+    print(path_gen(p[0], p[1]) + path_gen(p[2], p[3]))
