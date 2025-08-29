@@ -27,7 +27,7 @@ def main():
         a2, b2 = a * a, b * b
     except FileNotFoundError:
         fatal_log()
-    except OSError as e:
+    except Exception as e:
         print(f'Ошибка при работе с файлом: "{e}"', file=sys.stderr)
         sys.exit(1)
 
@@ -46,7 +46,7 @@ def main():
                     print(2)  # снаружи
     except FileNotFoundError:
         fatal_log()
-    except OSError as e:
+    except Exception as e:
         print(f'Ошибка при работе с файлом: "{e}"', file=sys.stderr)
         sys.exit(1)
 
